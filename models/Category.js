@@ -13,6 +13,7 @@ Category.init(
       primaryKey: true,
       autoIncrement: true
     },
+        // Defining columns based on category-seeds.js under seeds. 
     category_name: {
       type: DataTypes.STRING,
       allowNull: false
