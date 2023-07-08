@@ -59,7 +59,29 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
+  Category.update(
+    {
+      category_name: req.body.category_name
+    },
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  )
+.then(categoryData => {
+  if(!categoryData){
+    res.status(404).json({alert: 'Id does not match with existing Categories'});
+    return;
+  }
+  res.json(categoryData)
+})
+.catch(err => {
+  console.log(err);
+  res.status(505).json(err)
 });
+});
+
 
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
